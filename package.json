@@ -1,0 +1,38 @@
+{
+  "name": "markdown-to-txt",
+  "version": "1.0.0",
+  "description": "Convert markdown to plain text",
+  "main": "index.js",
+  "types": "./lib/markdown-to-txt.d.ts",
+  "scripts": {
+    "start": "tsc && node ./index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejrbuss/markdown-to-txt.git"
+  },
+  "keywords": [
+    "markdown",
+    "remove",
+    "txt",
+    "plain",
+    "text"
+  ],
+  "author": "Eric Buss (root@ejrbuss.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ejrbuss/markdown-to-txt/issues"
+  },
+  "homepage": "https://github.com/ejrbuss/markdown-to-txt#readme",
+  "dependencies": {
+    "marked": "^0.6.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/marked": "^0.6.5",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  }
+}
