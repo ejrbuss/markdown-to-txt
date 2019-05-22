@@ -2,10 +2,10 @@
   "name": "markdown-to-txt",
   "version": "1.0.0",
   "description": "Convert markdown to plain text",
-  "main": "index.js",
+  "main": "./lib/markdown-to-txt.js",
   "types": "./lib/markdown-to-txt.d.ts",
   "scripts": {
-    "start": "tsc && node ./index.js",
+    "start": "tsc",
     "test": "jest"
   },
   "repository": {

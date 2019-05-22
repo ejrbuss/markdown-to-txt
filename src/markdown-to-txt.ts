@@ -67,7 +67,7 @@ const renderer: Renderer = {
  * @param options  the options to apply
  * @returns the unmarked string (plain text)
  */
-export default function markdownToTxt(markdown?: string, options: IMarkdownToTxtOptions = {
+export function markdownToTxt(markdown?: string, options: IMarkdownToTxtOptions = {
     escapeHtml: true,
     gfm:        true,
     pedantic:   false,
@@ -86,3 +86,5 @@ export default function markdownToTxt(markdown?: string, options: IMarkdownToTxt
     }
     return '';
 }
+
+export default markdownToTxt;

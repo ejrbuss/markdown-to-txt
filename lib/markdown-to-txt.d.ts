@@ -15,5 +15,5 @@ interface IMarkdownToTxtOptions {
  * @param options  the options to apply
  * @returns the unmarked string (plain text)
  */
-export default function markdownToTxt(markdown?: string, options?: IMarkdownToTxtOptions): string;
-export {};
+export declare function markdownToTxt(markdown?: string, options?: IMarkdownToTxtOptions): string;
+export default markdownToTxt;
