@@ -1,6 +1,6 @@
 {
   "name": "markdown-to-txt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert markdown to plain text",
   "main": "./lib/markdown-to-txt.js",
   "types": "./lib/markdown-to-txt.d.ts",
