@@ -28,7 +28,7 @@ import markdownToTxt from 'markdown-to-txt';
 markdownToTxt('Some *quoted* `*code*`'); // "Some quoted *code*"
 ```
 
-`markdownToTxt` allows for options object. to be passed as a second argument. The following options are available:
+`markdownToTxt` allows for options object to be passed as a second argument. The following options are available:
 
 | Option | Default | Description |
 |-|-|-|
