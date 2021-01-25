@@ -33,7 +33,7 @@ markdownToTxt('Some *quoted* `*code*`'); // "Some quoted *code*"
 | Option | Default | Description |
 |-|-|-|
 | escapeHtml | `true` | Escapes HTML in the final string |
-| gfp | `true` | Uses GitHub flavour markdown (passed through to marked) |
+| gfm | `true` | Uses GitHub flavour markdown (passed through to marked) |
 | pedantic | `false` | Conform to markdown<i></i>.pl (passed through to marked) |
 
 ## Contact
