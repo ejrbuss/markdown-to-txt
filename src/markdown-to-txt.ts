@@ -1,90 +1,61 @@
-import marked, { Renderer } from 'marked';
+import marked, { MarkedOptions, Renderer } from "marked";
+import { escape, unescape } from "lodash";
 
-/* Using lodash escape implementation: https://github.com/lodash/lodash/blob/master/escape.js */
-const htmlEscapes: { [chr: string]: string } = {
-    '&': '&amp',
-    '<': '&lt',
-    '>': '&gt',
-    '"': '&quot',
-    "'": '&#39',
-};
-  
-const reUnescapedHtml    = /[&<>"']/g;
-const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
+const block = (text: string) => text + "\n\n";
+const escapeBlock = (text: string) => escape(text) + "\n\n";
+const line = (text: string) => text + "\n";
+const inline = (text: string) => text;
+const newline = () => "\n";
+const empty = () => "";
 
-const escapeHtml = (string: string): string => {
-    if (string && reHasUnescapedHtml.test(string)) {
-        return string.replace(reUnescapedHtml, (chr) => htmlEscapes[chr]);
-    } else {
-        return string;
-    }
-};
-
-interface IMarkdownToTxtOptions {
-    escapeHtml?: boolean;
-    gfm?: boolean,
-    pedantic?: boolean,
-}
-
-const blockFn   = (block: string) => block + '\n';
-const inlineFn  = (text: string) => text;
-const newlineFn = () => '\n';
-const emptyFn   = () => '';
-
-const renderer: Renderer = {
-    // Block elements
-    code:       blockFn,
-    blockquote: blockFn,
-    html:       emptyFn,
-    heading:    blockFn,
-    hr:         emptyFn,
-    list:       blockFn,
-    listitem:   (text) => blockFn(text),
-    paragraph:  blockFn,
-    table:      (header, body) => blockFn(header) + blockFn(body),
-    tablerow:   blockFn,
-    tablecell:  blockFn,
-    // Inline elements
-    strong:   inlineFn,
-    em:       inlineFn,
-    codespan: inlineFn,
-    br:       newlineFn,
-    del:      inlineFn,
-    link:     (_0, _1, text) => inlineFn(text),
-    image:    (_0, _2, text) => inlineFn(text),
-    text:     inlineFn,
+const TxtRenderer: Renderer = {
+	// Block elements
+	code: escapeBlock,
+	blockquote: block,
+	html: empty,
+	heading: block,
+	hr: newline,
+	list: (text) => block(text.trim()),
+	listitem: line,
+	checkbox: empty,
+	paragraph: block,
+	table: (header, body) => line(header + body),
+	tablerow: (text) => line(text.trim()),
+	tablecell: (text) => text + " ",
+	// Inline elements
+	strong: inline,
+	em: inline,
+	codespan: inline,
+	br: newline,
+	del: inline,
+	link: (_0, _1, text) => text,
+	image: (_0, _1, text) => text,
+	text: inline,
+	// etc.
+	options: {},
 };
 
 /**
- * Converts markdown to plaintext. Accepts an option object with the following
- * fields:
- * 
- *  - escapeHtml (default: true) Escapes HTML in the final string
- *  - gfp (default: true) Uses github flavor markdown (passed through to marked)
- *  - pedantic (default: false) Conform to markdown.pl (passed through to marked)
- * 
- * @param markdown the markdown to convert
- * @param options  the options to apply
- * @returns the unmarked string (plain text)
+ * Converts markdown to plaintext using the marked Markdown library.
+ * Accepts [MarkedOptions](https://marked.js.org/using_advanced#options) as
+ * the second argument.
+ *
+ * NOTE: The output of markdownToTxt is NOT sanitized. The output may contain
+ * valid HTML, JavaScript, etc. Be sure to sanitize if the output is intended
+ * for web use.
+ *
+ * @param markdown the markdown text to txtify
+ * @param options  the marked options
+ * @returns the unmarked text
  */
-export function markdownToTxt(markdown?: string, options: IMarkdownToTxtOptions = {
-    escapeHtml: true,
-    gfm:        true,
-    pedantic:   false,
-}): string {
-    if (markdown) {
-        const unmarked = marked(markdown, { 
-            gfm: options.gfm,
-            pedantic: options.pedantic,
-            renderer: renderer,
-        });
-
-        if (options.escapeHtml) {
-            return escapeHtml(unmarked);
-        }
-        return unmarked;
-    }
-    return '';
+export function markdownToTxt(
+	markdown: string,
+	options?: MarkedOptions
+): string {
+	const unmarked = marked(markdown, { ...options, renderer: TxtRenderer });
+	const unescaped = unescape(unmarked);
+	const trimmed = unescaped.trim();
+	return trimmed;
 }
 
 export default markdownToTxt;

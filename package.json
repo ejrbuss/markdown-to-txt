@@ -1,11 +1,11 @@
 {
   "name": "markdown-to-txt",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Convert markdown to plain text",
-  "main": "./lib/markdown-to-txt.js",
-  "types": "./lib/markdown-to-txt.d.ts",
+  "main": "./dist/markdown-to-txt.js",
+  "types": "./dist/markdown-to-txt.d.ts",
   "scripts": {
-    "start": "tsc",
+    "build": "tsc",
     "test": "jest"
   },
   "repository": {
@@ -25,14 +25,18 @@
     "url": "https://github.com/ejrbuss/markdown-to-txt/issues"
   },
   "homepage": "https://github.com/ejrbuss/markdown-to-txt#readme",
-  "dependencies": {
-    "marked": "^0.6.2"
-  },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@types/marked": "^0.6.5",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.4.5"
+    "@types/jest": "^27.0.2",
+    "@types/lodash.escape": "^4.0.6",
+    "@types/lodash.unescape": "^4.0.6",
+    "@types/marked": "^3.0.2",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "lodash.escape": "^4.0.1",
+    "lodash.unescape": "^4.0.1",
+    "marked": "^3.0.8"
   }
 }

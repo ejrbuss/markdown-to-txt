@@ -28,13 +28,18 @@ import markdownToTxt from 'markdown-to-txt';
 markdownToTxt('Some *quoted* `*code*`'); // "Some quoted *code*"
 ```
 
-`markdownToTxt` allows for options object to be passed as a second argument. The following options are available:
+`markdownToTxt` accepts [MarkedOptions](https://marked.js.org/using_advanced#options)
+as its second argument.
 
-| Option | Default | Description |
-|-|-|-|
-| escapeHtml | `true` | Escapes HTML in the final string |
-| gfm | `true` | Uses GitHub flavour markdown (passed through to marked) |
-| pedantic | `false` | Conform to markdown<i></i>.pl (passed through to marked) |
+**NOTE:** The output of markdownToTxt is **not** sanitized. The output may contain
+valid HTML, JavaScript, etc. Be sure to sanitize if the output is intended for
+web use.
+
+## Changelog
+
+ - **2.0.0**
+	- Options argument for `markdownToTxt` changed to align with latest version of marked.
+	- `escapeHtml` option removed
 
 ## Contact
 
