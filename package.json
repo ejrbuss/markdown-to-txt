@@ -37,6 +37,6 @@
   "dependencies": {
     "lodash.escape": "^4.0.1",
     "lodash.unescape": "^4.0.1",
-    "marked": "^3.0.8"
+    "marked": "^4.0.10"
   }
 }
