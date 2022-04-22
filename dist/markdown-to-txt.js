@@ -1,10 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.markdownToTxt = void 0;
-const marked_1 = __importDefault(require("marked"));
+const marked_1 = require("marked");
 const lodash_1 = require("lodash");
 const block = (text) => text + "\n\n";
 const escapeBlock = (text) => (0, lodash_1.escape)(text) + "\n\n";
@@ -52,7 +49,7 @@ const TxtRenderer = {
  * @returns the unmarked text
  */
 function markdownToTxt(markdown, options) {
-    const unmarked = (0, marked_1.default)(markdown, Object.assign(Object.assign({}, options), { renderer: TxtRenderer }));
+    const unmarked = (0, marked_1.marked)(markdown, Object.assign(Object.assign({}, options), { renderer: TxtRenderer }));
     const unescaped = (0, lodash_1.unescape)(unmarked);
     const trimmed = unescaped.trim();
     return trimmed;

@@ -1,4 +1,4 @@
-import { MarkedOptions } from "marked";
+import { marked } from "marked";
 /**
  * Converts markdown to plaintext using the marked Markdown library.
  * Accepts [MarkedOptions](https://marked.js.org/using_advanced#options) as
@@ -12,5 +12,5 @@ import { MarkedOptions } from "marked";
  * @param options  the marked options
  * @returns the unmarked text
  */
-export declare function markdownToTxt(markdown: string, options?: MarkedOptions): string;
+export declare function markdownToTxt(markdown: string, options?: marked.MarkedOptions): string;
 export default markdownToTxt;
