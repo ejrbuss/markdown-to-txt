@@ -40,6 +40,8 @@ web use.
  - **2.0.0**
 	- Options argument for `markdownToTxt` changed to align with latest version of marked.
 	- `escapeHtml` option removed
+ - **2.0.1**
+        - Updated marked to latest version (4.0.14) 
 
 ## Contact
 
