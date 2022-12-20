@@ -1,10 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.markdownToTxt = void 0;
 const marked_1 = require("marked");
-const lodash_1 = require("lodash");
+const lodash_escape_1 = __importDefault(require("lodash.escape"));
+const lodash_unescape_1 = __importDefault(require("lodash.unescape"));
 const block = (text) => text + "\n\n";
-const escapeBlock = (text) => (0, lodash_1.escape)(text) + "\n\n";
+const escapeBlock = (text) => (0, lodash_escape_1.default)(text) + "\n\n";
 const line = (text) => text + "\n";
 const inline = (text) => text;
 const newline = () => "\n";
@@ -50,7 +54,7 @@ const TxtRenderer = {
  */
 function markdownToTxt(markdown, options) {
     const unmarked = (0, marked_1.marked)(markdown, Object.assign(Object.assign({}, options), { renderer: TxtRenderer }));
-    const unescaped = (0, lodash_1.unescape)(unmarked);
+    const unescaped = (0, lodash_unescape_1.default)(unmarked);
     const trimmed = unescaped.trim();
     return trimmed;
 }
