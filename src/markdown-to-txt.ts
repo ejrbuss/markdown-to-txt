@@ -1,6 +1,6 @@
 import { marked } from "marked";
-import escape from "lodash/escape";
-import unescape from "lodash/unescape";
+import escape from "lodash.escape";
+import unescape from "lodash.unescape";
 
 const block = (text: string) => text + "\n\n";
 const escapeBlock = (text: string) => escape(text) + "\n\n";
