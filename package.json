@@ -35,6 +35,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "lodash.escape": "^4.0.1",
     "lodash.unescape": "^4.0.1",
     "marked": "^4.0.14"
